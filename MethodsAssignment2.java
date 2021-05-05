@@ -15,8 +15,8 @@
 
 
 
-    class MethodsAssignment2{
-        public static void main (String[] args){
-            
-        }
+class MethodsAssignment2{
+    public static void main (String[] args){
+        
     }
+}
