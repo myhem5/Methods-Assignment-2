@@ -2,7 +2,7 @@
 * Name : Emily & Chloe
 * Teacher: Mr.Ho
 * Date: May 5th 2021
-* Description: 
+* Description: Benfords Law Assignmnet
 */
 
 /* Stringdoc Example
@@ -28,6 +28,7 @@ class MethodsAssignment2 {
             // Begin
             if(begin.equals("Yes")||begin.equals("yes")){
                 try{
+                    // This is where the file is imported
                     salesFile();
 
                 }
@@ -44,7 +45,7 @@ class MethodsAssignment2 {
                 num = num+1;
             }
 
-            // Invalid
+            // Invalid, reinput to execute the code
             else{
                 System.out.println("Would you like to begin loading sales data (Yes or No):");
                 begin = reader.nextLine();
