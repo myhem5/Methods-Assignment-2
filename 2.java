@@ -13,42 +13,47 @@
 * @return :
 */
 
+import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 class MethodsAssignment2 {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Scanner reader = new Scanner(System.in);
-        System.out.println(" ");
-        System.out.print("Enter the file name of file you would like to import(ex. sales.csv): ");
+        System.out.println("Would you like to begin loading sales data (Yes or No):");
         String begin = reader.nextLine();
-        System.out.println(" ");
         int num = 0;
 
-        while (num == 0) {
+        while(num == 0){
             // Begin
-            if (begin.equals("sales.csv")) {
-                try {
+            if(begin.equals("Yes")||begin.equals("yes")){
+                try{
                     // This is where the file is imported
-                    salesFile(begin);
+                    salesFile();
 
-                } catch (Exception e) {
+                }
+                catch(Exception e){
                     System.out.println(e);
                 }
                 reader.close();
-                num = num + 1;
+                num = num+1;
+
+            }
+            // User doesn't want to start
+            else if(begin.equals("No")||begin.equals("no")){
+                System.out.println("The code will not continue then. Please start again when you are ready.");
+                num = num+1;
             }
 
-            // File not found
-            else if (!(begin.equals("sales.csv"))) {
-                System.out.println("File not found.");
-                System.out.println("Enter the file name of file you would like to import(ex. sales.csv):");
+            // Invalid, reinput to execute the code
+            else{
+                System.out.println("Would you like to begin loading sales data (Yes or No):");
                 begin = reader.nextLine();
-                System.out.println(" ");
-
             }
+
         }
+        
+        
     }
 
     /* 
@@ -58,13 +63,11 @@ class MethodsAssignment2 {
      * @param : sales.csv
      * @return : Loaded data from sales.csv into the program
      */
-    public static void salesFile(String fileName) {
-
-        String file = fileName;
+    public static void salesFile(){
 
         try {
             //create file to reference
-            File sSheet = new File(file);
+            File sSheet = new File("sales.csv");
             //read file
             // initialize scanner
             Scanner scanner = new Scanner(sSheet);
@@ -84,3 +87,4 @@ class MethodsAssignment2 {
     }
 
 }
+
