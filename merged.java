@@ -25,15 +25,18 @@ import java.util.ArrayList;
 class MethodsAssignment2 {
     public static void main(String[] args) {
         salesFile();
+        benfordsLaw();
+        countDigits()
         exportFile();
 
 
-    }    
 
+    
 
+    
     /* 
      * @Author - Emily
-     * Load the sales data from input file "sales.csv"
+     * 
      * 
      * @param : sales.csv
      * @return : Loaded data from sales.csv into the program
@@ -57,22 +60,21 @@ class MethodsAssignment2 {
                         File sSheet = new File("sales.csv");
                         //read file
                         // initialize scanner
-                        Scanner scanner = new Scanner(sSheet);
-            
+
+                        
                         while (scanner.hasNextLine()) {
                             // line exist
-                            String importedFile = scanner.nextLine();
-                            // System.out.println(line);
-            
+                            String importedFile = scanne
+
+                        
                         }
-                        scanner.close();
-                    }
-            
-                    catch (FileNotFoundException e) {
-                        System.out.println(e);
-                    }
+                     
+
                     
-                } 
+                    catch (FileNotFoundException e) {
+                     
+
+                  } 
                 catch (Exception e) {
                     System.out.println(e);
                 }
@@ -83,14 +85,69 @@ class MethodsAssignment2 {
             // File not found
             else if (!(begin.equals("sales.csv"))) {
                 System.out.println("File not found.");
-                System.out.println("Enter the file name of file you would like to import(ex. sales.csv):");
-                begin = reader.nextLine();
-                System.out.println(" ");
+             
 
+    
             }
-        }
-    }
+     
 
+    /*
+     * @Author - Chloe
+     * Benfords Law
+     *
+     * @param : 
+        rn : 
+
+        tatic void benfordsLaw(double[]
+            unt = new int
+
+            
+
+            // line exist
+            
+
+            
+
+            String sales = "sales.csv";
+            
+                ner.useDeli
+            
+                 firstChara
+            if (firstCharacter == '1') {
+                count[0]++;
+            }  else if (firstCharacter == '2') 
+                count[1]++;
+            }  else if (firstCharacter == '3') 
+
+                e if (first
+                 count[3]++; 
+                e if (first
+             
+
+             
+            }else if (firstCharacter == '8') {
+     
+
+    
+                }
+            }
+    }
+    /*
+     * @Author - Chloe
+     * Counting the Digits
+     *
+     * @param : 
+     * @return : 
+     */ 
+    public static double[
+
+    countDigits() {
+        d
+
+        for (double i = 1; i < 10; i++){
+     
+
+    }
 
     /* 
      * @Author - Emily
@@ -100,7 +157,7 @@ class MethodsAssignment2 {
      * @return : results.cs
      */
     public static void exportFile() {
-        Scanner reader2 = new Scanner(System.in);
+        Scanner reader2 = new
 
         //Success input
         System.out.println("Your data file CSV will be generated.");
@@ -115,19 +172,17 @@ class MethodsAssignment2 {
         }
 
         if (outFile.exists()) {
-            System.out.println("File existing, overwrite?(y/n)");
+            System.out.println("File existin g, overwrite?(y/n)");
             if (reader2.nextLine().startsWith("y") || reader2.nextLine().startsWith("Y")) {
-                //print fileName
+                //print fileName 
                 int num = 1;
-                outFile = new File("results"+ num + ".csv");
-                num = num + 1;
+
                 System.out.println("Find your information at " + "results"+ num + ".csv");
                 PrintWriter out = new PrintWriter(outFile);
 
 
-            }
+     
 
-        }
         out.close();
     }
 
