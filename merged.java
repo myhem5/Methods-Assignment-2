@@ -24,11 +24,12 @@ import java.util.ArrayList;
 
 class MethodsAssignment2 {
     public static void main(String[] args) {
-        int digitOccurance = 1;
         salesFile();
-        exportFile(digitOccurance);
+        exportFile();
 
-    }
+
+    }    
+
 
     /* 
      * @Author - Emily
@@ -37,7 +38,7 @@ class MethodsAssignment2 {
      * @param : sales.csv
      * @return : Loaded data from sales.csv into the program
      */
-    public static void salesFile() {
+    public static void salesFile(){
 
         Scanner reader = new Scanner(System.in);
         System.out.println(" ");
@@ -57,28 +58,25 @@ class MethodsAssignment2 {
                         //read file
                         // initialize scanner
                         Scanner scanner = new Scanner(sSheet);
-
+            
                         while (scanner.hasNextLine()) {
                             // line exist
                             String importedFile = scanner.nextLine();
                             // System.out.println(line);
-                            System.out.println(importedFile);
-
+            
                         }
-                        System.out.println(" ");
-                        System.out.println("File Imported.");
-                        System.out.println(" ");
-
                         scanner.close();
                     }
-
+            
                     catch (FileNotFoundException e) {
                         System.out.println(e);
                     }
-
-                } catch (Exception e) {
+                    
+                } 
+                catch (Exception e) {
                     System.out.println(e);
                 }
+                reader.close();
                 num = num + 1;
             }
 
@@ -91,8 +89,8 @@ class MethodsAssignment2 {
 
             }
         }
-        reader.close();
     }
+
 
     /* 
      * @Author - Emily
@@ -101,24 +99,37 @@ class MethodsAssignment2 {
      * @param : data from code
      * @return : results.cs
      */
-    public static void exportFile(int[] digitOccurance) {
-        double digitPerc = 0;
-        try{
-            File export = newFile("results.csv");
-            PrintWriter out = new PrintWriter(export);
+    public static void exportFile() {
+        Scanner reader2 = new Scanner(System.in);
 
-            //Generating CSV
-            if(export.exists()){
-                for(int i = 1; i< digitOccurrences.length; i++);
+        //Success input
+        System.out.println("Your data file CSV will be generated.");
+        System.out.println();
+        
+        //File name
+        File outFile = new File("results.csv");
 
-                // Chloe part 
+        if (!(outFile.exists())) {
+            PrintWriter out = new PrintWriter(outFile);
+            System.out.println("Find your information at result.csv");
+        }
+
+        if (outFile.exists()) {
+            System.out.println("File existing, overwrite?(y/n)");
+            if (reader2.nextLine().startsWith("y") || reader2.nextLine().startsWith("Y")) {
+                //print fileName
+                int num = 1;
+                outFile = new File("results"+ num + ".csv");
+                num = num + 1;
+                System.out.println("Find your information at " + "results"+ num + ".csv");
+                PrintWriter out = new PrintWriter(outFile);
+
+
             }
-        }
 
-        catch (Exception e) {
-                    System.out.println(e);
         }
-                
+        out.close();
     }
+
 
 }
