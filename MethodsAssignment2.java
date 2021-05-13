@@ -18,15 +18,17 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 
-/* Stringdoc Example
-* @Author - Emily and Chloe
-* Description:
-*
-* @param :
-* @return :
-*/
+/**
+ * 
+ * @author - Chloe and Emily
+ * 
+ * @version 1.0
+ * 
+ */
 
 class MethodsAssignment2 extends Application{
+
+    // Variables declared under the class
     private int total = 0;
     private int count[] = new int[9];
     private static double percent1;
@@ -39,6 +41,7 @@ class MethodsAssignment2 extends Application{
     private static double percent8;
     private static double percent9;
 
+    // constructor
     public void BenfordLawAssignment() {
         try {
            benfordsLaw();
@@ -122,12 +125,10 @@ class MethodsAssignment2 extends Application{
         reader.close();
     }
 
-    /*
+    /**
     * @Author - Chloe
-    * Benfords Law
-    *
-    * @param :
-    * @return :
+    * 
+    * @throws FileNotFoundException - thrown if the file is not valid or found
     */
    public void benfordsLaw() throws FileNotFoundException {
     Scanner scanner = new Scanner(new File("Sales.csv")); // reads from the file
@@ -172,24 +173,28 @@ class MethodsAssignment2 extends Application{
 
     }
  }
-    /*
-    * @Author - Chloe
-    * Benfords Law
-    *
-    * @param :
-    * @return :
-    */
 
+    /**
+    * @Author - Chloe
+    * 
+    * @param stage - Sets scene name
+    *
+    * @return - returns values to be used in the graph and table
+    *
+    */
  @Override
  public void start(Stage stage) {
+     // Sets the title for the graph
     stage.setTitle("Benford's Law Assignment");
 
+    // Sets lables for graph
     CategoryAxis xAxis = new CategoryAxis();
     xAxis.setLabel("Digit");
     NumberAxis yAxis = new NumberAxis("Percent", 0, 50, 5);
     BarChart<String, Number> barChart = new BarChart<String, Number>(xAxis, yAxis);
     barChart.setTitle("Figure 1 - Benford's Law Distribution Leading Digit");
 
+    // calculates percent for each first digit in sales
     double percent1 = (double) count[0] / (double) total * 100;
     double percent2 = (double) count[1] / (double) total * 100;
     double percent3 = (double) count[2] / (double) total * 100;
@@ -200,6 +205,7 @@ class MethodsAssignment2 extends Application{
     double percent8 = (double) count[7] / (double) total * 100;
     double percent9 = (double) count[8] / (double) total * 100;
 
+    // Adds data from percent into the bars on the graphs
     XYChart.Series series = new XYChart.Series();
     series.getData().add(new XYChart.Data("1", percent1));
     series.getData().add(new XYChart.Data("2", percent2));
@@ -211,26 +217,28 @@ class MethodsAssignment2 extends Application{
     series.getData().add(new XYChart.Data("8", percent8));
     series.getData().add(new XYChart.Data("9", percent9));
 
+    // Sets the size of the window (scene) for the bar graph
     Scene scene = new Scene(barChart, 800, 600);
     barChart.getData().addAll(series);
     stage.setScene(scene);
     stage.show();
 
-    double table1 = percent1;
-
     return;
  }
 
-    /*
+    /**
+    * 
     * @Author - Chloe
-    * Benfords Law
+    * 
+    * @param percent1 - uses to check if fraud occured
+    * @return - returns percent1 
     *
-    * @param :
-    * @return :
     */
+ public static double fraudCheck(double percent1) {
+        // Checks the percentage of the value 1 to see if it could be fraud
 
- public static double fraudCheck(double percent1, double percent22, double percent32, double percent42, double percent52, double percent62, double percent72, double percent82, double percent92) {
-     if (percent1 <= 32 && percent1 >= 29) {
+        // If the percentage is in between the values 29-32, fraud likely did not occur
+    if (percent1 <= 32 && percent1 >= 29) {
          System.out.println("Fraud Liekly Did Not Occur");
     } else {
         System.out.println("Fraud Likely Did Occur");
@@ -240,10 +248,11 @@ class MethodsAssignment2 extends Application{
 
 
     /* 
-     * @Author - Emily
+     * @Author - Emily and Chloe
      * export the file as results.csv
      * 
      * @param : data from code
+     * 
      * @return : results.cs
      */
     public static void exportFile(int digitOccurance) {
@@ -254,6 +263,7 @@ class MethodsAssignment2 extends Application{
 
             //Generating CSV
             if(export.exists()){
+                // Imports percent into a table
                 out.println("1 = " + percent1 + "%");
                 out.println("2 = " + percent2 + "%");
                 out.println("3 = " + percent3 + "%");
